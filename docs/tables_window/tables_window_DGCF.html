@@ -1,0 +1,677 @@
+<ul class="nav nav-tabs" id="tables_tabs">
+		<li class="active"> <a href="#resultsAmazon" data-toggle="tab" aria-expanded="true">Amazon-Book</a> </li>
+		<li> <a href="#resultsGowalla" data-toggle="tab" aria-expanded="true">Yelp'2018</a> </li>
+		<li> <a href="#resultsYelp" data-toggle="tab" aria-expanded="true">Gowalla</a> </li>
+</ul>
+
+<div class="tab-content">
+	
+	<div id="resultsAmazon" class="tab-pane fade active in">
+        <br>
+        <h3>Hyperparameter ranges for all considered baseline models</h3>
+        <table border="1">
+            
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Algorithms</th>
+                    <th style="text-align: center;">topK</th>
+                    <th style="text-align: center;">shrink</th>
+                    <th style="text-align: center;">Similarity</th>
+                    <th style="text-align: center;">Normalize</th>
+                    <th style="text-align: center;">α</th>
+                    <th style="text-align: center;">β</th>
+                    <th style="text-align: center;">&ell;<sub>2</sub> norm</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td align="center">kNN algorithms</td>
+                    <td align="center">[5 to 1000]</td>
+                    <td align="center">[0 to 1000]</td>
+                    <td align="center">[cosine, jaccard, asymmetric, dice, tversky]</td>
+                    <td align="center">[True, False]</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+                <tr>
+                    <td align="center">Graph based algorithms</td>
+                    <td align="center">[5 to 1000]</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">[0 to 2], strategy: uniform distribution</td>
+                    <td align="center">[0 to 2], strategy: uniform distribution</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+                <tr>
+                    <td align="center">EASE<sup>R</sup></td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">[1 to 1e<sup>7</sup>], strategy: log-uniform distribution</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br> <br>
+        <h3>Optimal hyperparameter values</h3>
+        <table border="1">
+            
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Algorithms</th>
+                    <th style="text-align: center;">topK</th>
+                    <th style="text-align: center;">shrink</th>
+                    <th style="text-align: center;">Similarity</th>
+                    <th style="text-align: center;">Normalize</th>
+                    <th style="text-align: center;">α</th>
+                    <th style="text-align: center;">β</th>
+                    <th style="text-align: center;">&ell;<sub>2</sub> norm</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td align="center">ItemkNN</td>
+                    <td align="center">144</td>
+                    <td align="center">1000</td>
+                    <td align="center">cosine</td>
+                    <td align="center">True</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+                <tr>
+                    <td align="center">UserkNN</td>
+                    <td align="center">146</td>
+                    <td align="center">1000</td>
+                    <td align="center">cosine</td>
+                    <td align="center">True</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+                <tr>
+                    <td align="center">P<sub>3</sub>α</td>
+                    <td align="center">496</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">False</td>
+                    <td align="center">0.7681732734954694</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+
+                <tr>
+                    <td align="center">RP<sub>3</sub>β</td>
+                    <td align="center">496</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">True</td>
+                    <td align="center">0.44477903655656115</td>
+                    <td align="center">0.5968193614337285</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+                <tr>
+                    <td align="center">EASE<sup>R</sup></td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">1e<sup>3</sup></td>
+                </tr>
+            </tbody>
+        </table> <br> <br>
+        <h3>Statistics of the provided train-test splits</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Users</th>
+                    <th style="text-align: center;">Items</th>
+                    <th style="text-align: center;">Interactions</th>
+                    <th style="text-align: center;">Density</th>
+                    <th style="text-align: center;">Data leakage</th>
+                    <th style="text-align: center;">Interactions per user<sub>min</sub></th>
+                    <th style="text-align: center;">Interactions per item<sub>min</sub></th>
+                    <th style="text-align: center;">Interactions per user<sub>max</sub></th>
+                    <th style="text-align: center;">Interactions per item<sub>max</sub></th>
+                    <th style="text-align: center;">Testing users</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: center;">52,643</td>
+                    <td style="text-align: center;">91,599</td>
+                    <td style="text-align: center;">2,984,108</td>
+                    <td style="text-align: center;">0.00062</td>
+                    <td style="text-align: center;">No</td>
+                    <td style="text-align: center;">16</td>
+                    <td style="text-align: center;">10</td>
+                    <td style="text-align: center;">13313</td>
+                    <td style="text-align: center;">1907</td>
+                    <td style="text-align: center;">52,639</td>
+                </tr>
+            </tbody>
+        </table>
+        <br><br>
+        <h3>Full result table</h3>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th rowspan="2" style="text-align: center;">Methods</th>
+                    <th colspan="2" style="text-align: center;">Amazon-Book</th>
+                    <th colspan="3" style="text-align: center;">Time(s)</th>
+                </tr>
+                <tr>
+
+                    <th style="text-align: center;">R@20</th>
+                    <th style="text-align: center;">N@20</th>
+                    <th style="text-align: center;">T-Time</th>
+                    <th style="text-align: center;">P-Time</th>
+                    <th style="text-align: center;">Average P-Time Per User</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td style="text-align: center;">Random</td>
+                    <td style="text-align: center;">0.00022</td>
+                    <td style="text-align: center;">0.00018</td>
+                    <td style="text-align: center;">0</td>
+                    <td style="text-align: center;">150.7472472</td>
+                    <td style="text-align: center;">0.002863576</td>
+                    
+                </tr>
+
+                <tr>
+                    <td style="text-align: center;">TopPop</td>
+                    <td style="text-align: center;">0.0024</td>
+                    <td style="text-align: center;">0.0044</td>
+                    <td style="text-align: center;">0.046885014</td>
+                    <td style="text-align: center;">128.3760633</td>
+                    <td style="text-align: center;">0.002438616</td>
+                    
+                </tr>
+
+                <tr>
+                    <td style="text-align: center;">ItemkNN</td>
+                    <td style="text-align: center;"><b>0.056</b></td>
+                    <td style="text-align: center;"><b>0.045</b></td>
+                    <td style="text-align: center;">426.9121618</td>
+                    <td style="text-align: center;">107.231256</td>
+                    <td style="text-align: center;">0.002036952</td>
+                    
+                </tr>
+                <tr>
+                    <td style="text-align: center;">UserkNN</td>
+                    <td style="text-align: center;"><b>0.051</b></td>
+                    <td style="text-align: center;"><b>0.041</b></td>
+                    <td style="text-align: center;">283.7361674</td>
+                    <td style="text-align: center;">104.065511</td>
+                    <td style="text-align: center;">0.001976816</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">P<sub>3</sub>&alpha;</td>
+                    <td style="text-align: center;"><b>0.056</b></td>
+                    <td style="text-align: center;"><b>0.043</b></td>
+                    <td style="text-align: center;">197.1278133</td>
+                    <td style="text-align: center;">114.8666947</td>
+                    <td style="text-align: center;">0.002181994</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">RP<sub>3</sub>&beta;</td>
+                    <td style="text-align: center;"><b>0.068</b></td>
+                    <td style="text-align: center;"><b>0.056</b></td>
+                    <td style="text-align: center;">224.2510846</td>
+                    <td style="text-align: center;">126.1138134</td>
+                    <td style="text-align: center;">0.002395643</td>
+
+                </tr>
+                <tr>
+                    <td style="text-align: center;">EASE<sup>R</sup></td>
+                    <td style="text-align: center;"><b> 0.071</b></td>
+                    <td style="text-align: center;"><b>0.056</b></td>
+                    <td style="text-align: center;">&mdash;</td>
+                    <td style="text-align: center;">&mdash;</td>
+                    <td style="text-align: center;">&mdash;</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center; text-align: center;">DGCF (Paper)</td>
+                    <td style="color:gray; text-align: center;">0.039</td>
+                    <td style="color:gray; text-align: center;">0.030</td>
+                    
+                </tr>
+                <tr>
+                    <td style="text-align: center;">DGCF (Code)</td>
+                    <td style="text-align: center;">0.011</td>
+                    <td style="text-align: center;">0.017</td>
+                    <td style="text-align: center;">&mdash;</td>
+                    <td style="text-align: center;">&mdash;</td>
+                    <td style="text-align: center;">&mdash;</td>
+                </tr>
+            </tbody>
+        </table>
+	</div>
+	<div id="resultsGowalla" class="tab-pane fade">
+        <br>
+        <h3>Optimal hyperparameter values</h3>
+        <table border="1">
+            
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Algorithms</th>
+                    <th style="text-align: center;">topK</th>
+                    <th style="text-align: center;">shrink</th>
+                    <th style="text-align: center;">Similarity</th>
+                    <th style="text-align: center;">Normalize</th>
+                    <th style="text-align: center;">α</th>
+                    <th style="text-align: center;">β</th>
+                    <th style="text-align: center;">&ell;<sub>2</sub> norm</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td align="center">ItemkNN</td>
+                    <td align="center">144</td>
+                    <td align="center">1000</td>
+                    <td align="center">cosine</td>
+                    <td align="center">True</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+                <tr>
+                    <td align="center">UserkNN</td>
+                    <td align="center">146</td>
+                    <td align="center">1000</td>
+                    <td align="center">cosine</td>
+                    <td align="center">True</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+                <tr>
+                    <td align="center">P<sub>3</sub>α</td>
+                    <td align="center">496</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">False</td>
+                    <td align="center">0.7681732734954694</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+
+                <tr>
+                    <td align="center">RP<sub>3</sub>β</td>
+                    <td align="center">350</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">True</td>
+                    <td align="center">0.7681732734954694</td>
+                    <td align="center">0.4181395996963926</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+                <tr>
+                    <td align="center">EASE<sup>R</sup></td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">1e<sup>3</sup></td>
+                </tr>
+            </tbody>
+        </table> <br> <br>
+        <h3>Statistics of the provided train-test splits</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Users</th>
+                    <th style="text-align: center;">Items</th>
+                    <th style="text-align: center;">Interactions</th>
+                    <th style="text-align: center;">Density</th>
+                    <th style="text-align: center;">Data leakage</th>
+                    <th style="text-align: center;">Interactions per user<sub>min</sub></th>
+                    <th style="text-align: center;">Interactions per item<sub>min</sub></th>
+                    <th style="text-align: center;">Interactions per user<sub>max</sub></th>
+                    <th style="text-align: center;">Interactions per item<sub>max</sub></th>
+                    <th style="text-align: center;">Testing users</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: center;">31,668</td>
+                    <td style="text-align: center;">38,048</td>
+                    <td style="text-align: center;">1,561,406</td>
+                    <td style="text-align: center;">0.00130</td>
+                    <td style="text-align: center;">No</td>
+                    <td style="text-align: center;">18</td>
+                    <td style="text-align: center;">10</td>
+                    <td style="text-align: center;">2311</td>
+                    <td style="text-align: center;">1492</td>
+                    <td style="text-align: center;">31,668</td>
+                </tr>
+            </tbody>
+        </table>
+        <br><br>
+        <h3>Full result table</h3>
+        <table border="1">
+            
+            <thead>
+                <tr>
+                    <th rowspan="2" style="text-align: center;">Methods</th>
+                    <th colspan="2" style="text-align: center;">Yelp'18</th>
+                    <th colspan="3" style="text-align: center;">Time(s)</th>
+                </tr>
+                <tr>
+
+                    <th style="text-align: center;">R@20</th>
+                    <th style="text-align: center;">N@20</th>
+                    <th style="text-align: center;">T-Time</th>
+                    <th style="text-align: center;">P-Time</th>
+                    <th style="text-align: center;">Average P-Time Per User</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td style="text-align: center;">Random</td>
+                    <td style="text-align: center;">0.0003</td>
+                    <td style="text-align: center;">0.0004</td>
+                    <td style="text-align: center;">0</td>
+                    <td style="text-align: center;">53.14148092</td>
+                    <td style="text-align: center;">0.001678081</td>
+                    
+                </tr>
+
+                <tr>
+                    <td style="text-align: center;">TopPop</td>
+                    <td style="text-align: center;">0.0125</td>
+                    <td style="text-align: center;">0.0101</td>
+                    <td style="text-align: center;">0.006148577</td>
+                    <td style="text-align: center;">45.95453548</td>
+                    <td style="text-align: center;">0.001451135</td>
+                    
+                </tr>
+
+
+                <tr>
+                    <td style="text-align: center;">ItemkNN</td>
+                    <td style="text-align: center;"><b>0.064</b></td>
+                    <td style="text-align: center;"><b>0.054</b></td>
+
+                    <td style="text-align: center;">81.77051783</td>
+                    <td style="text-align: center;">47.61694789</td>
+                    <td style="text-align: center;">0.00150363</td>
+                    
+                </tr>
+                <tr>
+                    <td style="text-align: center;">UserkNN</td>
+                    <td style="text-align: center;"><b>0.061</b></td>
+                    <td style="text-align: center;"><b>0.050</b></td>
+                    <td style="text-align: center;">72.28791833</td>
+                    <td style="text-align: center;">43.42841244</td>
+                    <td style="text-align: center;">0.001371366</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">P<sub>3</sub>&alpha;</td>
+                    <td style="text-align: center;"><b>0.064</b></td>
+                    <td style="text-align: center;"><b>0.052</b></td>
+                    <td style="text-align: center;">64.42336011</td>
+                    <td style="text-align: center;">46.88240695</td>
+                    <td style="text-align: center;">0.001480435</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">RP<sub>3</sub>&beta;</td>
+                    <td style="text-align: center;"><b>0.067</b></td>
+                    <td style="text-align: center;"><b>0.056</b></td>
+                    <td style="text-align: center;">54.6901195</td>
+                    <td style="text-align: center;">48.22654772</td>
+                    <td style="text-align: center;">0.001522879</td>
+
+                </tr>
+                <tr>
+                    <td style="text-align: center;">EASE<sup>R</sup></td>
+                    <td style="text-align: center;"><b>0.064</b></td>
+                    <td style="text-align: center;"><b>0.052</b></td>
+                    <td style="text-align: center;">555.2657838</td>
+                    <td style="text-align: center;">84.11382508</td>
+                    <td style="text-align: center;">0.002656114</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center; text-align: center;">DGCF (Paper)</td>
+                    <td style="color:gray; text-align: center;">0.064</td>
+                    <td style="color:gray; text-align: center;">0.052</td>
+                    
+                </tr>
+                <tr>
+                    <td style="text-align: center;">DGCF (Code)</td>
+                    <td style="text-align: center;">0.037</td>
+                    <td style="text-align: center;">0.028</td>
+                    <td style="text-align: center;">&mdash;</td>
+                    <td style="text-align: center;">&mdash;</td>
+                    <td style="text-align: center;">&mdash;</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div id="resultsYelp" class="tab-pane fade">
+
+        <br>
+        <h3>Optimal hyperparameter values</h3>
+        <table border="1">
+            
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Algorithms</th>
+                    <th style="text-align: center;">topK</th>
+                    <th style="text-align: center;">shrink</th>
+                    <th style="text-align: center;">Similarity</th>
+                    <th style="text-align: center;">Normalize</th>
+                    <th style="text-align: center;">α</th>
+                    <th style="text-align: center;">β</th>
+                    <th style="text-align: center;">&ell;<sub>2</sub> norm</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td align="center">ItemkNN</td>
+                    <td align="center">508</td>
+                    <td align="center">1000</td>
+                    <td align="center">cosine</td>
+                    <td align="center">True</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+                <tr>
+                    <td align="center">UserkNN</td>
+                    <td align="center">146</td>
+                    <td align="center">1000</td>
+                    <td align="center">cosine</td>
+                    <td align="center">True</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+                <tr>
+                    <td align="center">P<sub>3</sub>α</td>
+                    <td align="center">496</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">False</td>
+                    <td align="center">1.087096950563704</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+
+                <tr>
+                    <td align="center">RP<sub>3</sub>β</td>
+                    <td align="center">350</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">True</td>
+                    <td align="center">0.5663562161452378</td>
+                    <td align="center">0.001085447926739258</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+                <tr>
+                    <td align="center">EASE<sup>R</sup></td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">1e<sup>3</sup></td>
+                </tr>
+            </tbody>
+        </table> <br> <br>
+        <h3>Statistics of the provided train-test splits</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Users</th>
+                    <th style="text-align: center;">Items</th>
+                    <th style="text-align: center;">Interactions</th>
+                    <th style="text-align: center;">Density</th>
+                    <th style="text-align: center;">Data leakage</th>
+                    <th style="text-align: center;">Interactions per user<sub>min</sub></th>
+                    <th style="text-align: center;">Interactions per item<sub>min</sub></th>
+                    <th style="text-align: center;">Interactions per user<sub>max</sub></th>
+                    <th style="text-align: center;">Interactions per item<sub>max</sub></th>
+                    <th style="text-align: center;">Testing users</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: center;">29,858</td>
+                    <td style="text-align: center;">40,981</td>
+                    <td style="text-align: center;">1,027,370</td>
+                    <td style="text-align: center;">0.00084</td>
+                    <td style="text-align: center;">No</td>
+                    <td style="text-align: center;">9</td>
+                    <td style="text-align: center;">10</td>
+                    <td style="text-align: center;">1,014</td>
+                    <td style="text-align: center;">2,310</td>
+                    <td style="text-align: center;">29,858</td>
+                </tr>
+            </tbody>
+        </table>
+        <br><br>
+        <h3>Full result table</h3>
+        <table border="1">
+            
+            <thead>
+                <tr>
+                    <th rowspan="2" style="text-align: center;">Methods</th>
+                    <th colspan="2" style="text-align: center;">Yelp'18</th>
+                    <th colspan="3" style="text-align: center;">Time(s)</th>
+                </tr>
+                <tr>
+
+                    <th style="text-align: center;">R@20</th>
+                    <th style="text-align: center;">N@20</th>
+                    <th style="text-align: center;">T-Time</th>
+                    <th style="text-align: center;">P-Time</th>
+                    <th style="text-align: center;">Average P-Time Per User</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td style="text-align: center;">Random</td>
+                    <td style="text-align: center;">0.00013</td>
+                    <td style="text-align: center;">0.00022</td>
+                    <td style="text-align: center;">0</td>
+                    <td style="text-align: center;">51.75596523</td>
+                    <td style="text-align: center;">0.001733404</td>
+                    
+                </tr>
+
+                <tr>
+                    <td style="text-align: center;">TopPop</td>
+                    <td style="text-align: center;">0.0139</td>
+                    <td style="text-align: center;">0.0317</td>
+                    <td style="text-align: center;">0</td>
+                    <td style="text-align: center;">45.00996447</td>
+                    <td style="text-align: center;">0.001507467</td>
+                    
+                </tr>
+
+
+
+                <tr>
+                    <td style="text-align: center;">ItemkNN</td>
+                    <td style="text-align: center;">0.156</td>
+                    <td style="text-align: center;">0.123</td>
+
+                    <td style="text-align: center;">89.02916408</td>
+                    <td style="text-align: center;">49.55570626</td>
+                    <td style="text-align: center;">0.001659713</td>
+                    
+                </tr>
+                <tr>
+                    <td style="text-align: center;">UserkNN</td>
+                    <td style="text-align: center;">0.155</td>
+                    <td style="text-align: center;">0.128</td>
+                    <td style="text-align: center;">58.89179349</td>
+                    <td style="text-align: center;">42.49520731</td>
+                    <td style="text-align: center;">0.001423244</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">P<sub>3</sub>&alpha;</td>
+                    <td style="text-align: center;"><b>0.175</b></td>
+                    <td style="text-align: center;"><b>0.146</b></td>
+                    
+                    <td style="text-align: center;">90.30393124</td>
+                    <td style="text-align: center;">48.97286344</td>
+                    <td style="text-align: center;">0.001640192</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">RP<sub>3</sub>&beta;</td>
+                    <td style="text-align: center;"><b>0.183</b></td>
+                    <td style="text-align: center;"><b>0.152</b></td>
+
+                    <td style="text-align: center;">91.19598675</td>
+                    <td style="text-align: center;">49.15153646</td>
+                    <td style="text-align: center;">0.001646176</td>
+
+                </tr>
+                <tr>
+                    <td style="text-align: center;">EASE<sup>R</sup></td>
+                    <td style="text-align: center;"><b>0.163</b></td>
+                    <td style="text-align: center;"><b>0.136</b></td>
+
+                    <td style="text-align: center;">724.8426113</td>
+                    <td style="text-align: center;">76.08247638</td>
+                    <td style="text-align: center;">0.002548144</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center; text-align: center;">DGCF (Paper)</td>
+                    <td style="color:gray; text-align: center;">0.179</td>
+                    <td style="color:gray; text-align: center;">0.152</td>
+                    
+                </tr>
+                <tr>
+                    <td style="text-align: center;">DGCF (Code)</td>
+                    <td style="text-align: center;">0.133</td>
+                    <td style="text-align: center;">0.109</td>
+                    <td style="text-align: center;">&mdash;</td>
+                    <td style="text-align: center;">&mdash;</td>
+                    <td style="text-align: center;">&mdash;</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>

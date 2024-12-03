@@ -1,0 +1,703 @@
+<ul class="nav nav-tabs" id="tables_tabs">
+		<li class="active"> <a href="#AmazonBook" data-toggle="tab" aria-expanded="true">Amazon-Book</a> </li>
+		<li> <a href="#Gowalla" data-toggle="tab" aria-expanded="true">Gowalla</a> </li>
+		<li> <a href="#Tmall" data-toggle="tab" aria-expanded="true">Tmall</a> </li>
+</ul>
+<div class="tab-content">
+	
+	<div id="AmazonBook" class="tab-pane fade active in">
+	    <br>
+        <h3>Hyperparameter ranges for all considered baseline models</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Algorithms</th>
+                    <th style="text-align: center;">topK</th>
+                    <th style="text-align: center;">shrink</th>
+                    <th style="text-align: center;">Similarity</th>
+                    <th style="text-align: center;">Normalize</th>
+                    <th style="text-align: center;">α</th>
+                    <th style="text-align: center;">β</th>
+                    <th style="text-align: center;">&ell;<sub>2</sub> norm</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td align="center">kNN algorithms</td>
+                    <td align="center">[5 to 1000]</td>
+                    <td align="center">[0 to 1000]</td>
+                    <td align="center">[cosine, jaccard, asymmetric, dice, tversky]</td>
+                    <td align="center">[True, False]</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+                <tr>
+                    <td align="center">Graph based algorithms</td>
+                    <td align="center">[5 to 1000]</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">[0 to 2], strategy: uniform distribution</td>
+                    <td align="center">[0 to 2], strategy: uniform distribution</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+                <tr>
+                    <td align="center">EASE<sup>R</sup></td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">[1 to 1e<sup>7</sup>], strategy: log-uniform distribution</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+        <h3>Optimal hyperparameter values</h3>
+        <table border="1">
+            
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Algorithms</th>
+                    <th style="text-align: center;">topK</th>
+                    <th style="text-align: center;">shrink</th>
+                    <th style="text-align: center;">Similarity</th>
+                    <th style="text-align: center;">Normalize</th>
+                    <th style="text-align: center;">α</th>
+                    <th style="text-align: center;">β</th>
+                    <th style="text-align: center;">&ell;<sub>2</sub> norm</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td align="center">ItemkNN</td>
+                    <td align="center">144</td>
+                    <td align="center">1000</td>
+                    <td align="center">cosine</td>
+                    <td align="center">True</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+                <tr>
+                    <td align="center">UserkNN</td>
+                    <td align="center">146</td>
+                    <td align="center">1000</td>
+                    <td align="center">cosine</td>
+                    <td align="center">True</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+                <tr>
+                    <td align="center">P<sub>3</sub>α</td>
+                    <td align="center">496</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">False</td>
+                    <td align="center">0.7681732734954694</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+
+                <tr>
+                    <td align="center">RP<sub>3</sub>β</td>
+                    <td align="center">496</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">True</td>
+                    <td align="center">0.44477903655656115</td>
+                    <td align="center">0.5968193614337285</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+                <tr>
+                    <td align="center">EASE<sup>R</sup></td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">1e<sup>3</sup></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+        <h3>Statistics of the provided train-test splits</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Users</th>
+                    <th style="text-align: center;">Items</th>
+                    <th style="text-align: center;">Interactions</th>
+                    <th style="text-align: center;">Density</th>
+                    <th style="text-align: center;">Data leakage</th>
+                    <th style="text-align: center;">Interactions per user<sub>min</sub></th>
+                    <th style="text-align: center;">Interactions per item<sub>min</sub></th>
+                    <th style="text-align: center;">Interactions per user<sub>max</sub></th>
+                    <th style="text-align: center;">Interactions per item<sub>max</sub></th>
+                    <th style="text-align: center;">Testing users</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: center;">78,578</td>
+                    <td style="text-align: center;">77,801</td>
+                    <td style="text-align: center;">2,240,156</td>
+                    <td style="text-align: center;">0.00062</td>
+                    <td style="text-align: center;">No</td>
+                    <td style="text-align: center;">16</td>
+                    <td style="text-align: center;">10</td>
+                    <td style="text-align: center;">13313</td>
+                    <td style="text-align: center;">1907</td>
+                    <td style="text-align: center;">52,639</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+        <h3>Full result table</h3>
+        <table border="1" style="text-align: center;">
+            
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Methods</th>
+                    <th style="text-align: center;">R@20</th>
+                    <th style="text-align: center;">R@40</th>
+                    <th style="text-align: center;">N@20</th>
+                    <th style="text-align: center;">N@40</th>
+                    <th style="text-align: center;">T-Time(s)</th>
+                    <th style="text-align: center;">P-Time(s)</th>
+                    <th style="text-align: center;">Average Perdiction Time Per User(ms)</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    <td>Random</td>
+                    <td>0.0004</td>
+                    <td>0.0006</td>
+                    <td>0.0002</td>
+                    <td>0.0003</td>
+                    <td>0</td>
+                    <td>281.290</td>
+                    <td>3.579</td>
+                </tr>
+
+                <tr>
+                    <td>TopPopular</td>
+                    <td>0.009</td>
+                    <td>0.016</td>
+                    <td>0.007</td>
+                    <td>0.009</td>
+                    <td>0.052</td>
+                    <td>239.364</td>
+                    <td>3.046</td>
+                </tr>
+                <tr>
+                    <td>UserKNN</td>
+                    <td><b>0.126</b></td>
+                    <td><b>0.172</b></td>
+                    <td><b>0.104</b></td>
+                    <td><b>0.119</b></td>
+                    <td>629.351</td>
+                    <td>240.319</td>
+                    <td>3.058</td>
+                </tr>
+                <tr>
+                    <td>ItemKNN</td>
+                    <td><b>0.152</b></td>
+                    <td><b>0.205</b></td>
+                    <td><b>0.127</b></td>
+                    <td><b>0.144</b></td>
+                    <td>627.185</td>
+                    <td>211.171</td>
+                    <td>2.687</td>
+                </tr>
+                <tr>
+                    <td>P<sub>3</sub>α</td>
+                    <td><b>0.133</b></td>
+                    <td><b>0.188</b></td>
+                    <td><b>0.107</b></td>
+                    <td><b>0.124</b></td>
+                    <td>182.373</td>
+                    <td>232.467</td>
+                    <td>2.958</td>
+                </tr>
+                <tr>
+                    <td>RP<sub>3</sub>β</td>
+                    <td><b>0.141</b></td>
+                    <td><b>0.190</b></td>
+                    <td><b>0.117</b></td>
+                    <td><b>0.133</b></td>
+                    <td>200.428</td>
+                    <td>238.372</td>
+                    <td>3.033</td>
+                </tr>
+                <tr>
+                    <td>EASE</td>
+                    <td>&mdash;</td>
+                    <td>&mdash;</td>
+                    <td>&mdash;</td>
+                    <td>&mdash;</td>
+                    <td>&mdash;</td>
+                    <td>&mdash;</td>
+                    <td>&mdash;</td>
+                </tr>
+                <tr>
+                    <td>DCCF (Code)</td>
+                    <td>0.092</td>
+                    <td>0.138</td>
+                    <td>0.071</td>
+                    <td>0.086</td>
+                    <td>5065.123</td>
+                    <td>57.026</td>
+                    <td>0.738</td>
+                </tr>
+                <tr>
+                    <td>DCCF (Paper)</td>
+                    <td style="color: gray;">0.088</td>
+                    <td style="color: gray;">0.134</td>
+                    <td style="color: gray;">0.068</td>
+                    <td style="color: gray;">0.082</td>
+                </tr>
+            </tbody>
+        </table>
+	</div>
+    <div id="Gowalla" class="tab-pane fade">
+
+        <br>
+        <h3>Optimal hyperparameter values</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Algorithms</th>
+                    <th style="text-align: center;">topK</th>
+                    <th style="text-align: center;">Shrink</th>
+                    <th style="text-align: center;">Similarity</th>
+                    <th style="text-align: center;">Normalize</th>
+                    <th style="text-align: center;">α</th>
+                    <th style="text-align: center;">β</th>
+                    <th style="text-align: center;">&ell;<sub>2</sub> norm</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td align="center">ItemkNN</td>
+                    <td align="center">144</td>
+                    <td align="center">1000</td>
+                    <td align="center">cosine</td>
+                    <td align="center">True</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+                <tr>
+                    <td align="center">UserkNN</td>
+                    <td align="center">146</td>
+                    <td align="center">1000</td>
+                    <td align="center">cosine</td>
+                    <td align="center">True</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+                <tr>
+                    <td align="center">P<sub>3</sub>α</td>
+                    <td align="center">496</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">False</td>
+                    <td align="center">0.7681732734954694</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+
+                <tr>
+                    <td align="center">RP<sub>3</sub>β</td>
+                    <td align="center">496</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">True</td>
+                    <td align="center">0.44477903655656115</td>
+                    <td align="center">0.5968193614337285</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+                <tr>
+                    <td align="center">EASE<sup>R</sup></td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">1e<sup>3</sup></td>
+                </tr>
+            </tbody>
+        </table> 
+        
+        <br>
+        <h3>Statistics of the provided train-test splits</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Users</th>
+                    <th style="text-align: center;">Items</th>
+                    <th style="text-align: center;">Interactions</th>
+                    <th style="text-align: center;">Density</th>
+                    <th style="text-align: center;">Data leakage</th>
+                    <th style="text-align: center;">Interactions per user<sub>min</sub></th>
+                    <th style="text-align: center;">Interactions per item<sub>min</sub></th>
+                    <th style="text-align: center;">Interactions per user<sub>max</sub></th>
+                    <th style="text-align: center;">Interactions per item<sub>max</sub></th>
+                    <th style="text-align: center;">Testing users</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: center;">50,821</td>
+                    <td style="text-align: center;">41,390</td>
+                    <td style="text-align: center;">1,172,425</td>
+                    <td style="text-align: center;">0.00040</td>
+                    <td style="text-align: center;">No</td>
+                    <td style="text-align: center;">5</td>
+                    <td style="text-align: center;">1</td>
+                    <td style="text-align: center;">1037</td>
+                    <td style="text-align: center;">2513</td>
+                    <td style="text-align: center;">50,821</td>
+                </tr>
+            </tbody>
+        </table>
+
+		<br>
+        <h3>Full result table</h3>
+        <table border="1" style="text-align: center;">
+
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Methods</th>
+                    <th style="text-align: center;">R@20</th>
+                    <th style="text-align: center;">R@40</th>
+                    <th style="text-align: center;">N@20</th>
+                    <th style="text-align: center;">N@40</th>
+                    <th style="text-align: center;">T-Time(s)</th>
+                    <th style="text-align: center;">P-Time(s)</th>
+                    <th style="text-align: center;">Average Perdiction Time Per User(ms)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Random</td>
+                    <td>0.0004</td>
+                    <td>0.0007</td>
+                    <td>0.0001</td>
+                    <td>0.0003</td>
+                    <td>0</td>
+                    <td>117.449</td>
+                    <td>2.311</td>
+                </tr>
+                <tr>
+                    <td>TopPopular</td>
+                    <td>0.025</td>
+                    <td>0.037</td>
+                    <td>0.013</td>
+                    <td>0.017</td>
+                    <td>0.028</td>
+                    <td>91.554</td>
+                    <td>1.801</td>
+                </tr>
+                <tr>
+                    <td>UserKNN</td>
+                    <td><b>0.213</b></td>
+                    <td><b>0.295</b></td>
+                    <td><b>0.132</b></td>
+                    <td><b>0.153</b></td>
+                    <td>186.934</td>
+                    <td>88.685</td>
+                    <td>1.745</td>
+                    
+                </tr>
+                <tr>
+                    <td>ItemKNN</td>
+                    <td><b>0.235</b></td>
+                    <td><b>0.321</b></td>
+                    <td><b>0.146</b></td>
+                    <td><b>0.168</b></td>
+                    <td>285.577</td>
+                    <td>105.796</td>
+                    <td>2.081</td>
+                    
+                </tr>
+                <tr>
+                    <td>P<sub>3</sub>α</td>
+                    <td><b>0.231</b></td>
+                    <td><b>0.317</b></td>
+                    <td><b>0.141</b></td>
+                    <td><b>0.164</b></td>
+                    <td>133.445</td>
+                    <td>98.886</td>
+                    <td>1.945</td>
+                </tr>
+                <tr>
+                    <td>RP<sub>3</sub>β</td>
+                    <td><b>0.245</b></td>
+                    <td><b>0.337</b></td>
+                    <td><b>0.149</b></td>
+                    <td><b>0.173</b></td>
+                    <td>135.346</td>
+                    <td>99.059</td>
+                    <td>1.949</td>
+                </tr>
+                <tr>
+                    <td>EASE</td>
+                    <td><b>0.218</b></td>
+                    <td><b>0.303</b></td>
+                    <td><b>0.132</b></td>
+                    <td><b>0.154</b></td>
+                    <td>3846.424</td>
+                    <td>162.580</td>
+                    <td>3.199</td>
+                </tr>
+                <tr>
+                    <td>DCCF (Code)</td>
+                    <td>0.189</td>
+                    <td>0.266</td>
+                    <td>0.112</td>
+                    <td>0.132</td>
+                    <td>4396.699</td>
+                    <td>27.119</td>
+                    <td>0.709</td>
+                </tr>
+                <tr>
+                    <td>DCCF (Paper)</td>
+                    <td style="color: gray;">0.187</td>
+                    <td style="color: gray;">0.264</td>
+                    <td style="color: gray;">0.112</td>
+                    <td style="color: gray;">0.132</td>
+                </tr>
+            </tbody>
+        </table>
+        
+	        
+		
+	</div>
+
+    <br>
+    <div id="Tmall" class="tab-pane fade">
+        <h3>Optimal hyperparameter values</h3>
+        <table border="1">
+            
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Algorithms</th>
+                    <th style="text-align: center;">topK</th>
+                    <th style="text-align: center;">shrink</th>
+                    <th style="text-align: center;">Similarity</th>
+                    <th style="text-align: center;">Normalize</th>
+                    <th style="text-align: center;">α</th>
+                    <th style="text-align: center;">β</th>
+                    <th style="text-align: center;">&ell;<sub>2</sub> norm</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td align="center">ItemkNN</td>
+                    <td align="center">144</td>
+                    <td align="center">1000</td>
+                    <td align="center">cosine</td>
+                    <td align="center">True</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+                <tr>
+                    <td align="center">UserkNN</td>
+                    <td align="center">146</td>
+                    <td align="center">1000</td>
+                    <td align="center">cosine</td>
+                    <td align="center">True</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+                <tr>
+                    <td align="center">P<sub>3</sub>α</td>
+                    <td align="center">496</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">False</td>
+                    <td align="center">0.7681732734954694</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+
+                <tr>
+                    <td align="center">RP<sub>3</sub>β</td>
+                    <td align="center">496</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">True</td>
+                    <td align="center">0.44477903655656115</td>
+                    <td align="center">0.5968193614337285</td>
+                    <td align="center">&mdash;</td>
+                </tr>
+                <tr>
+                    <td align="center">EASE<sup>R</sup></td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">&mdash;</td>
+                    <td align="center">1e<sup>3</sup></td>
+                </tr>
+            </tbody>
+        </table> 
+        
+        <br>
+        <h3>Statistics of the provided train-test splits</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Users</th>
+                    <th style="text-align: center;">Items</th>
+                    <th style="text-align: center;">Interactions</th>
+                    <th style="text-align: center;">Density</th>
+                    <th style="text-align: center;">Data leakage</th>
+                    <th style="text-align: center;">Interactions per user<sub>min</sub></th>
+                    <th style="text-align: center;">Interactions per item<sub>min</sub></th>
+                    <th style="text-align: center;">Interactions per user<sub>max</sub></th>
+                    <th style="text-align: center;">Interactions per item<sub>max</sub></th>
+                    <th style="text-align: center;">Testing users</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: center;">47,939</td>
+                    <td style="text-align: center;">41,390</td>
+                    <td style="text-align: center;">2,357,450</td>
+                    <td style="text-align: center;">0.00119</td>
+                    <td style="text-align: center;">No</td>
+                    <td style="text-align: center;">20</td>
+                    <td style="text-align: center;">3</td>
+                    <td style="text-align: center;">251</td>
+                    <td style="text-align: center;">2408</td>
+                    <td style="text-align: center;">47,528</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+        <h3>Full result table</h3>
+        <table border="1" style="text-align: center;">
+
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Methods</th>
+                    <th style="text-align: center;">R@20</th>
+                    <th style="text-align: center;">R@40</th>
+                    <th style="text-align: center;">N@20</th>
+                    <th style="text-align: center;">N@40</th>
+                    <th style="text-align: center;">T-Time(s)</th>
+                    <th style="text-align: center;">P-Time(s)</th>
+                    <th style="text-align: center;">Average Perdiction Time Per User(ms)</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Random</td>
+                    <td>0.0005</td>
+                    <td>0.0010</td>
+                    <td>0.0003</td>
+                    <td>0.0005</td>
+                    <td>0</td>
+                    <td>126.208</td>
+                    <td>2.632</td>
+                </tr>
+                <tr>
+                    <td>TopPopular</td>
+                    <td>0.010</td>
+                    <td>0.017</td>
+                    <td>0.007</td>
+                    <td>0.009</td>
+                    <td>0.064</td>
+                    <td>107.504</td>
+                    <td>2.242</td>
+                </tr>
+                <tr>
+                    <td>UserKNN</td>
+                    <td><b>0.087</b></td>
+                    <td><b>0.131</b></td>
+                    <td><b>0.063</b></td>
+                    <td><b>0.079</b></td>
+                    <td>358.630</td>
+                    <td>143.295</td>
+                    <td>2.989</td>
+                </tr>
+                <tr>
+                    <td>ItemKNN</td>
+                    <td><b>0.110</b></td>
+                    <td><b>0.163</b></td>
+                    <td><b>0.080</b></td>
+                    <td><b>0.099</b></td>
+                    <td>357.441</td>
+                    <td>150.163</td>
+                    <td>3.132</td>
+                </tr>
+                <tr>
+                    <td>P<sub>3</sub>α</td>
+                    <td><b>0.109</b></td>
+                    <td><b>0.162</b></td>
+                    <td><b>0.080</b></td>
+                    <td><b>0.099</b></td>
+                    <td>40.439</td>
+                    <td>104.470</td>
+                    <td>2.179</td>
+                </tr>
+                <tr>
+                    <td>RP<sub>3</sub>β</td>
+                    <td><b>0.116</b></td>
+                    <td><b>0.173</b></td>
+                    <td><b>0.084</b></td>
+                    <td><b>0.104</b></td>
+                    <td>76.275</td>
+                    <td>131.423</td>
+                    <td>2.741</td>
+                </tr>
+                <tr>
+                    <td>EASE</td>
+                    <td><b>0.093</b></td>
+                    <td><b>0.143</b></td>
+                    <td><b>0.067</b></td>
+                    <td><b>0.084</b></td>
+                    <td>1455.104</td>
+                    <td>229.898</td>
+                    <td>4.795</td>
+                </tr>
+                <tr>
+                    <td>DCCF (Code)</td>
+                    <td>0.064</td>
+                    <td>0.101</td>
+                    <td>0.045</td>
+                    <td>0.058</td>
+                    <td>2064.829</td>
+                    <td>35.941</td>
+                    <td>0.756</td>
+                </tr>
+                <tr>
+                    <td>DCCF (Paper)</td>
+                    <td style="color: gray;">0.066</td>
+                    <td style="color: gray;">0.104</td>
+                    <td style="color: gray;">0.046</td>
+                    <td style="color: gray;">0.059</td>
+                </tr>
+            </tbody>
+        </table>
+	</div>
+</div>

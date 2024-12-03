@@ -1,0 +1,250 @@
+<!DOCTYPE html >
+
+<html>
+
+<head>
+
+	<title>SIGIR '25 - Additional Information and Results</title>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Roboto+Slab|Zilla+Slab" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	
+	<link rel="stylesheet" href="css/sortable-theme-tu.css" />
+	<link rel="stylesheet" href="css/style.css" />
+	<!--<link rel="stylesheet" href="css/style_anon.css" />-->
+	<script src="js/sortable.min.js"></script>
+	
+	<link rel="include" href="tables_window/tables_window-KGIN.html" data-target="window-KGIN" />
+	<link rel="include" href="tables_window/tables_window-IDSNR.html" data-target="window-IDSNR" />
+	<link rel="include" href="tables_window/tables_window_DGCF.html" data-target="window-DGCF" />
+	<link rel="include" href="tables_window/tables_window_DCCF.html" data-target="window-DCCF" />
+	<link rel="include" href="tables_window/tables_window_BIGCF.html" data-target="window-BIGCF" />
+	
+	
+	<link rel="include" href="tables_single/listOfArticles.html" data-target="alloutlets" />
+	<link rel="include" href="tables_single/outlets.html" data-target="topoutlets" />
+	
+	
+	<link rel="include" href="tables_opt/opt_table_single.html" data-target="single-params" />
+	<link rel="include" href="tables_opt/opt_tables_window.html" data-target="window-params" />
+	<link rel="include" href="tables_opt/opt_tables_windowtuningOnTestdata.html" data-target="window-paramstest" />
+
+	<script type="text/javascript">
+		
+		function round( element, size ) {
+			var rounded = parseFloat( $(element).html() ).toFixed( size );
+			$(element).html( rounded );
+		}
+	
+		$( document ).ready( function() {
+			
+			$( "link[rel=include]" ).each( function() {
+				target = $( this ).attr("data-target");
+				url = $( this ).attr("href");
+				$( "#"+target ).load( url, function() {
+					$( this ).find( ".algo" ).each( function() {
+						name = $(this).html();
+						el = $(this).closest( ".tab-pane" ).find( ".configs ."+name );
+						$(this).attr( "title", el.html() );
+						$(this).attr( "data-placement", "top" );
+						$(this).attr( "data-container", "body" );
+						$(this).attr( "data-html", "true" );
+					});
+					$( this ).find( ".algo" ).tooltip();
+					
+					$( this ).find( ".num-4" ).each( function() {
+						round(this,3);
+					});
+					
+					$( this ).find( ".num-00" ).each( function() {
+						round(this,0);
+					});
+					
+					$( this ).find( ".num-3" ).each( function() {
+						round(this,3);
+					});
+					
+					$( this ).find( ".num2" ).each( function() {
+						round(this, 2);
+					});
+					
+					window.Sortable.initTable( $( this ).find( ".sortable-theme-minimal" ).get(0)  );
+					if ( $( this ).find( ".sortable-theme-minimal" ).length > 1 ) {
+						window.Sortable.initTable( $( this ).find( ".sortable-theme-minimal" ).get(1)  );
+						window.Sortable.initTable( $( this ).find( ".sortable-theme-minimal" ).get(2)  );
+					}
+					//$( this ).find( ".sortable-theme-minimal" ).DataTable();
+					$( this ).find( ".sortable-theme-minimal th:nth-child(2)" ).click();
+					
+				} );
+
+			} );
+			
+			$( "table.hyper-params td:not(:nth-child(1)):not(:nth-child(2))" ).each( function() {
+				round(this,2);
+			} );
+			
+			$( "table.hyper-space tr:not(:nth-child(1)):not(:nth-child(2)) td:not(:nth-child(1))" ).each( function() {
+				round(this,2);
+			} );
+			
+			$( ".num-4" ).each( function() {
+				round(this,4);
+			});
+			
+			$( ".num-3" ).each( function() {
+				round(this,3);
+			});
+			
+			$( ".num-2" ).each( function() {
+				round(this,2);
+			});
+			
+		} );
+	</script>
+	
+</head>
+
+<body>
+
+<div class="mainbox">
+			
+	<h2>
+		<span class="subtext italic">
+			SIGIR 2025 - Padova, Italy
+		</span> <br />
+		<span class="highlighted">
+			Are we really making much progress? An analysis of intent-aware recommendation models
+		</span> <br />
+		<span class="subtext">
+			Additional Information: Source Code, Optimized Hyper-Parameters and Additional Result Tables
+		</span>
+	</h2>    
+	
+	<hr/>
+	
+	<div class="authors">
+		
+		<div class="author">
+			anonymous <br/>
+			<span class="mail">anonymous@gmail.com</span><br/>
+		</div>
+        <div class="author">
+				anonymous <br/>
+			<span class="mail">anonymous@gmail.com</span><br/>
+		</div>
+	</div>
+	
+	<hr/>
+	
+	<div class="abstract">
+
+		<p align="justify">
+			Lately, we have observed a growing interest in <em>intent-aware</em> recommender systems (IARS). The promise of such systems 
+			is that they are capable of generating better recommendations by predicting and considering the underlying motivations and 
+			short-term goals of consumers. From a technical perspective, various sophisticated neural models were recently proposed 
+			in this emerging and promising area. In the broader context of complex neural recommendation models, a growing number of 
+			research works unfortunately indicates that (i) reproducing such works is often difficult and (ii) that the true benefits 
+			of such models may be limited in reality, e.g., because the reported improvements were obtained through comparisons with 
+			untuned or weak baselines. In this work, we investigate if recent research in IARS is similarly affected by such problems. 
+			Specifically, we tried to reproduce five contemporary IARS models that were published in top-level outlets, and we benchmarked them 
+			against a number of traditional non-neural recommendation models.
+            In two of the cases, running the provided code with the optimal hyperparameters reported in the paper did not yield the results reported in the paper. 
+            Worryingly, we find that all examined IARS approaches are consistently outperformed by at least one traditional model. These findings point to sustained 
+            methodological issues and to a pressing need for more rigorous scholarly practices.
+		</p>
+	</div>
+
+	<nav>
+		<ul class="nav nav-tabs">
+		  <li class="active"><a data-toggle="tab" href="#sources">Source Code and Datasets</a></li>
+		  <li><a data-toggle="tab" href="#window">Result Tables</a></li>
+		  <li><a data-toggle="tab" href="#single">Considered papers</a></li>
+		</ul>
+	</nav>
+	
+	
+	<div class="tab-content">
+	
+		<div id="sources" class="tab-pane fade in active">
+			
+			<h3>Source Code and Datasets</h3>
+			
+			<p>
+				<span style="color:blue">The full source code of the framework  and utilized dataset can be found here:</span> <br/>
+				<a href="https://github.com/RecSysEvaluation/Intent_Aware_topn">https://github.com/RecSysEvaluation/Intent_Aware_topn</a> <br/>
+			</p>
+									
+		</div>
+		
+		<div id="window" class="tab-pane fade in">
+			
+			<ul class="nav nav-tabs" id="tables_tabs">
+				
+	            		<li class="active"><a href="#window-KGIN" data-toggle="tab">KGIN</a></li>
+	            		<li><a href="#window-IDSNR" data-toggle="tab">IDS4NR</a></li>
+						<li><a href="#window-DGCF" data-toggle="tab">DGCF</a></li>
+						<li><a href="#window-DCCF" data-toggle="tab">DCCF</a></li>
+	            		<li><a href="#window-BIGCF" data-toggle="tab">BIGCF</a></li>
+			</ul>
+
+			<div class="tab-content">
+				<div id="window-KGIN" class="tab-pane fade in active">
+					aaaaa
+				</div>
+				<div id="window-IDSNR" class="tab-pane fade in">
+				 	ccccc
+				</div>
+				
+				<div id="window-DGCF" class="tab-pane fade in">
+					ddddd
+				</div>
+				
+				<div id="window-DCCF" class="tab-pane fade in">
+					iiiiii
+				</div>
+				
+				<div id="window-BIGCF" class="tab-pane fade in">
+					eeeee
+				</div>
+				
+			</div>
+			
+		</div>
+
+
+		<div id="single" class="tab-pane fade in">
+			
+			<ul class="nav nav-tabs" id="tables_tabs">
+				<li class="active"><a href="#alloutlets" data-toggle="tab">All outlets</a></li>
+	            <li><a href="#topoutlets" data-toggle="tab">Considered outlets (top-n)</a></li>
+		    </ul>		
+
+			<div class="tab-content">
+			
+				<div id="alloutlets" class="tab-pane fade in active">
+					
+				</div>
+
+				<div id="topoutlets" class="tab-pane fade in"></div>
+					
+				</div>
+				
+			
+			</div>
+	            
+			
+		</div>
+		
+	</div>
+	<br/>
+	<br/>
+</div>	
+
+<script type="text/javascript"></script>
+
+</body>
+</html>

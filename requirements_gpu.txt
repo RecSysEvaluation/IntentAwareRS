@@ -1,0 +1,35 @@
+numpy==1.23.5
+pandas==1.5.3
+torch==2.3.1+cu118
+torchvision==0.18.1+cu118
+-f https://download.pytorch.org/whl/torch_stable.html
+torch_geometric
+# Optional dependencies with specific URLs
+pyg_lib 
+-f https://data.pyg.org/whl/torch-2.3.0+cu118.html
+torch-scatter 
+-f https://data.pyg.org/whl/torch-2.3.0+cu118.html
+torch-sparse 
+-f https://data.pyg.org/whl/torch-2.3.0+cu118.html
+torch-cluster 
+-f https://data.pyg.org/whl/torch-2.3.0+cu118.html
+torch-spline-conv 
+-f https://data.pyg.org/whl/torch-2.3.0+cu118.html
+prettytable
+scipy==1.10.1
+python-dateutil==2.8.1
+pytz==2021.1
+certifi==2020.12.5
+pyyaml==5.4.1
+networkx==2.5.1
+scikit-learn==0.24.2
+six==1.15.0
+theano==1.0.3
+psutil==5.8.0
+pympler==0.9
+tables==3.8.0
+scikit-optimize==0.8.1
+tqdm==4.64.1
+dill==0.3.6
+numba
+nltk
