@@ -416,7 +416,7 @@ def run_experiments(data_path, args = None):
     config = dict()
     config['n_users'] = data_generator.n_users
     config['n_items'] = data_generator.n_items
-
+    
     """
     *********************************************************
     Generate the Laplacian matrix, where each entry defines the decay factor (e.g., p_ui) between two connected nodes.
@@ -441,7 +441,7 @@ def run_experiments(data_path, args = None):
     """
     start = time.time()
     for epoch in tqdm(range(args.epoch)):
-
+        diff = time.time()
         print(epoch)
         loss, mf_loss, emb_loss, cor_loss = 0., 0., 0., 0.
         n_batch = data_generator.n_train // args.batch_size + 1
@@ -462,6 +462,7 @@ def run_experiments(data_path, args = None):
             mf_loss += batch_mf_loss / n_batch
             emb_loss += batch_emb_loss / n_batch
             cor_loss += batch_cor_loss / n_batch
+        print("Time required to complete one iteration:  "+ str(time.time() - diff))
             
     trainingTime = time.time() - start
     start = time.time()        

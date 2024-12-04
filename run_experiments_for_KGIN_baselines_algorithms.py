@@ -91,11 +91,9 @@ if __name__ == '__main__':
 
     
     ############### RUN EXPERIMENT KGIN MODEL ###############
-    
     result_df = run_experiments_KGIN_model(dataset=data_path, dim=dim, lr = lr, sim_regularity=sim_regularity, batch_size=batch_size, 
                                            node_dropout=node_dropout, node_dropout_rate=node_dropout_rate, mess_dropout=mess_dropout, 
                                            mess_dropout_rate=mess_dropout_rate, gpu_id=gpu_id, context_hops=context_hops, epoch = epoch, lastFMDataLeakage = args.resolveLastFMDataLeakageIssue, datasetName = args.dataset)
-    
     if args.resolveLastFMDataLeakageIssue == True and args.dataset == "lastFM":
         result_df.to_csv(saved_results+"/"+"KGIN_resolveLastFMDataLeakageIssue_"+dataset_name+".text", index = False, sep = "\t")
     else:
@@ -105,6 +103,7 @@ if __name__ == '__main__':
 
     ############### RUN EXPERIMENTS FOR BASELINE MODELS ###############
     recommender_class_list = [
+
         Random,
         TopPop,
         ItemKNNCFRecommender,
@@ -112,8 +111,8 @@ if __name__ == '__main__':
         P3alphaRecommender,
         RP3betaRecommender,
         EASE_R_Recommender
-        ]
 
+        ]
     if args.dataset == "alibabaFashion": # get optimal values.........
         itemkNN_best_HP  = {"topK": 508, "similarity": "cosine", "shrink": 1000, "normalize": True}
         userkNN_best_HP  = {"topK": 146, "similarity": "cosine"}
