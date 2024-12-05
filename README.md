@@ -9,9 +9,9 @@
 
 
   <figure align="center">
-    <img src="intentAware.webp" width="300" title="Intent Aware Recommender Systems">
+    <img align="center" src="intentAware.webp" width="300" title="Intent Aware Recommender Systems">
     <figcaption>Intent Aware Recommender Systems<cite>Credit goes to ChtGPT</cite></figcaption>
-</figure>
+  </figure>
   
 </p>
 
