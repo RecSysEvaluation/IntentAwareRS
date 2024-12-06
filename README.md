@@ -6,12 +6,9 @@
 <body>
 <h2>Intent Aware Recommender Systems</h2>
 <p align="center">
-
   <img src="intentAware.webp" width="300", title="Intent Aware Recommender Systems">
   
-  
 </p>
-
 
 
 <h3>Introduction</h3>
