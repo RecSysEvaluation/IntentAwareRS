@@ -8,7 +8,7 @@
 <p align="center">
 
   <img src="intentAware.webp" width="300", title="Intent Aware Recommender Systems">
-  <p>Credit goes to ChatGPT</p>
+  
   
 </p>
 
