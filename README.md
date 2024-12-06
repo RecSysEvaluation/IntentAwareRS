@@ -5,15 +5,12 @@
 </head>
 <body>
 <h2>Intent Aware Recommender Systems</h2>
-<p align="center">
-
-
-  <figure align="center">
-    <img align="center" src="intentAware.webp" width="300" title="Intent Aware Recommender Systems">
-    <figcaption>Intent Aware Recommender Systems<cite>Credit goes to ChtGPT</cite></figcaption>
-  </figure>
-  
-</p>
+<div style="text-align: center;">
+    <figure>
+        <img src="intentAware.webp" width="300" title="Intent Aware Recommender Systems">
+        <figcaption>Intent Aware Recommender Systems</figcaption>
+    </figure>
+</div>
 
 
 
