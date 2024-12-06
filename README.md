@@ -5,12 +5,12 @@
 </head>
 <body>
 <h2>Intent Aware Recommender Systems</h2>
-<div style="text-align: center;">
-    <figure>
-        <img src="intentAware.webp" width="300" title="Intent Aware Recommender Systems">
-        <figcaption>Intent Aware Recommender Systems</figcaption>
-    </figure>
-</div>
+<p align="center">
+
+  <img src="intentAware.webp" width="300", title="Intent Aware Recommender Systems">
+  <p>Credit goes to ChatGPT</p>
+  
+</p>
 
 
 
