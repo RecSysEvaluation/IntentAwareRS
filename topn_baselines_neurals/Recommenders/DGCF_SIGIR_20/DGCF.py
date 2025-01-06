@@ -442,7 +442,7 @@ def run_experiments(data_path, args = None):
     start = time.time()
     for epoch in tqdm(range(args.epoch)):
         diff = time.time()
-        print(epoch)
+        print("Epoch number:  "+str(epoch+1))
         loss, mf_loss, emb_loss, cor_loss = 0., 0., 0., 0.
         n_batch = data_generator.n_train // args.batch_size + 1
         cor_batch_size = int(max(data_generator.n_users/n_batch, data_generator.n_items/n_batch))
