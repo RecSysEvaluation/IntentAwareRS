@@ -11,16 +11,16 @@
 
 
 <h3>Introduction</h3>
-<p align="justify">This reproducibility package was prepared for the paper titled "Are we really making much progress? An analysis of intent-aware recommendation models" and submitted to the SIGIR'25.  The results reported in this paper were achieved with the help of the codes, which were shared by the original authors of the selected articles. For the implementation of baseline models, we utilized the RecSys2019_DeepLearning_Evaluation  framework. The framework includes the state-of-the-art baseline models for top-n recommender systems. More information about the  RecSys2019_DeepLearning_Evaluation framework can be found by following the provided <a href="https://github.com/MaurizioFD/RecSys2019_DeepLearning_Evaluation" target="_blank">link</a>. For the uploaded picture, the credit goes to ChatGPT. </p>
+<p align="justify">This reproducibility package was prepared for the paper titled "Are we really making much progress? An analysis of intent-aware recommendation models" and submitted to the ABC.  The results reported in this paper were achieved with the help of the codes, which were shared by the original authors of the selected articles. For the implementation of baseline models, we utilized the RecSys2019_DeepLearning_Evaluation  framework. The framework includes the state-of-the-art baseline models for top-n recommender systems. More information about the  RecSys2019_DeepLearning_Evaluation framework can be found by following the provided <a href="https://github.com/MaurizioFD/RecSys2019_DeepLearning_Evaluation" target="_blank">link</a>. For the uploaded picture, the credit goes to ChatGPT. </p>
 
 
 <h5>Reproduced articles</h5>
 <ul>
-<li>Disentangled Graph Collaborative Filtering (SIGIR'20)</li>
-<li>Learning Intents behind Interactions with Knowledge Graph for Recommendation (WWW'21) </li>
-<li>Intent Disentanglement and Feature Self-Supervision for Novel Recommendation (Journal: IEEE Transactions on Knowledge and Data Engineering'22 - IF: 8.9) </li>
-<li>Disentangled Contrastive Collaborative Filtering (SIGIR'23) </li>
-<li>Exploring the Individuality and Collectivity of Intents behind Interactions for Graph Collaborative Filtering (SIGIR'24) </li>
+<li>Disentangled Graph Collaborative Filtering (SIGIR 2020)</li>
+<li>Learning Intents behind Interactions with Knowledge Graph for Recommendation (WWW 2021) </li>
+<li>Intent Disentanglement and Feature Self-Supervision for Novel Recommendation (Journal: IEEE Transactions on Knowledge and Data Engineering 2022 - IF: 8.9) </li>
+<li>Disentangled Contrastive Collaborative Filtering (SIGIR 2023) </li>
+<li>Exploring the Individuality and Collectivity of Intents behind Interactions for Graph Collaborative Filtering (SIGIR 2024) </li>
 </ul>
 
 <h5>Required libraries to run the framework</h5>
@@ -124,8 +124,8 @@
 
 <h5>Disentangled Graph Collaborative Filtering (DGCF)</h5>
 <ul>
-<li>Run this command to reproduce the experiments for the DGCF on the Yelp2018 dataset: <code>python run_experiments_for_DGCF_algorithm.py --dataset yelp2018</code></li>
-<li>Run this command to reproduce the experiments for the baseline models on the Yelp2018 dataset: <code>python run_experiments_DGCF_baseline_algorithms.py --dataset yelp2018</code></li>
+<li>Run this command to reproduce the experiments for the DGCF on the Yelp 2018 dataset: <code>python run_experiments_for_DGCF_algorithm.py --dataset yelp2018</code></li>
+<li>Run this command to reproduce the experiments for the baseline models on the Yelp 2018 dataset: <code>python run_experiments_DGCF_baseline_algorithms.py --dataset yelp2018</code></li>
 <li>Run this command to reproduce the experiments for the DGCF on the Gowalla dataset: <code>python run_experiments_for_DGCF_algorithm.py --dataset gowalla --batch_size 2000 --n_layers 1 --n_iterations 2 --corDecay 0.01 --n_factors 4 --show_step 3 --lr 0.001</code></li>
 <li>Run this command to reproduce the experiments for the baseline models on the Gowalla dataset: <code>python run_experiments_DGCF_baseline_algorithms.py --dataset gowalla</code></li>
 <li>Run this command to reproduce the experiments for the DGCF on the Amazon-book dataset: <code>python run_experiments_for_DGCF_algorithm.py --dataset amazonbook</code></li>
