@@ -74,8 +74,7 @@
     <li>Move into the <b>IntentAwareRS</b> directory</li>
     <li>Run this command to create virtual environment: <code>conda create --name IntentAwareRS_env python=3.8</code></li>
     <li>Run this command to activate the virtual environment: <code>conda activate IntentAwareRS_env</code></li>
-    <li>Run this command to install the required libraries for CPU: <code>pip install -r requirements_cpu.txt</code>. However, if you have support of CUDA-capable GPUs, 
-        then run this command to install the required libraries to run the experiments on GPU: <code>pip install -r requirements_gpu.txt</code></li>
+    <li>Run this command to install the required libraries: <code>pip install -r requirements_gpu.txt</code></li>
   </ul>
 </p>
 
