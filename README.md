@@ -89,9 +89,6 @@
 <li>Run this command to reproduce the experiments for the KGIN and baseline models on the lastFm dataset (without data leakage): <code>python run_experiments_for_KGIN_baselines_algorithms.py --dataset lastFm resolveLastFMDataLeakageIssue True</code>  </li>
 </ul>
 
-
-
-
 <h5>Intent Disentanglement and Feature Self-supervision for Novel Recommendation (IDSNR)</h5>
 <ul>
 <li>Run this command to reproduce the experiments for the IDS4NR_NCF and baseline models on the MovieLens dataset: <code>python run_experiments_IDS4NR_baselines_algorithms.py --dataset MovieLens --model NCF</code>  </li>
@@ -104,31 +101,33 @@
 
 <h5>Disentangled Contrastive Collaborative Filtering (DCCF)</h5>
 <ul>
-<li>Run this command to reproduce the experiments for the DCCF and baseline models on the AmazonBook dataset: <code>python run_experiments_for_DCCF_baselines_algorithms.py --dataset amazonBook</code>  </li>
+<li>Run this command to reproduce the experiments for the DCCF and baseline models on the AmazonBook dataset: <code>python run_experiments_for_DCCF_baselines_original.py --dataset amazonBook</code>  </li>
 
-<li>Run this command to reproduce the experiments for the DCCF and baseline models on the Gowalla dataset: <code>python run_experiments_for_DCCF_baselines_algorithms.py --dataset gowalla</code>  </li>
+<li>Run this command to reproduce the experiments for the DCCF and baseline models on the Gowalla dataset: <code>python run_experiments_for_DCCF_baselines_original.py --dataset gowalla</code>  </li>
 
-<li>Run this command to reproduce the experiments for the DCCF and baseline models on the Tmall dataset: <code>python run_experiments_for_DCCF_baselines_algorithms.py --dataset tmall</code>  </li>
+<li>Run this command to reproduce the experiments for the DCCF and baseline models on the Tmall dataset: <code>python run_experiments_for_DCCF_baselines_original.py --dataset tmall</code>  </li>
 </ul>
 
 <h5>Bilateral Intent-guided Graph Collaborative Filtering (BIGCF)</h5>
 <ul>
-<li>Run this command to reproduce the experiments for the BIGCF model on the AmazonBook dataset: <code>python run_experiments_for_BIGCF_algorithm.py --dataset amazonBook</code>  </li>
+<li>Run this command to reproduce the experiments for the BIGCF model on the AmazonBook dataset: <code>python run_experiments_for_BIGCF_original.py --dataset amazonBook</code>  </li>
 
-<li>Run this command to reproduce the experiments for the BIGCF model on the Gowalla dataset: <code>python run_experiments_for_BIGCF_algorithm.py --dataset gowalla</code>  </li>
+<li>Run this command to reproduce the experiments for the BIGCF model on the Gowalla dataset: <code>python run_experiments_for_BIGCF_original.py --dataset gowalla</code>  </li>
 
-<li>Run this command to reproduce the experiments for the BIGCF model on the Tmall dataset: <code>python run_experiments_for_BIGCF_algorithm.py --dataset tmall</code>  </li>
+<li>Run this command to reproduce the experiments for the BIGCF model on the Tmall dataset: <code>python run_experiments_for_BIGCF_original.py --dataset tmall</code>  </li>
 <li><b>Note:</b> The BIGCF model used the same train-test splits for all datasets shared by the DCCF model. Therefore, we do not need to rerun the experiments for the baseline models</li>
 </ul>
 
 <h5>Disentangled Graph Collaborative Filtering (DGCF)</h5>
 <ul>
-<li>Run this command to reproduce the experiments for the DGCF on the Yelp 2018 dataset: <code>python run_experiments_for_DGCF_algorithm.py --dataset yelp2018</code></li>
-<li>Run this command to reproduce the experiments for the baseline models on the Yelp 2018 dataset: <code>python run_experiments_DGCF_baseline_algorithms.py --dataset yelp2018</code></li>
-<li>Run this command to reproduce the experiments for the DGCF on the Gowalla dataset: <code>python run_experiments_for_DGCF_algorithm.py --dataset gowalla --batch_size 2000 --n_layers 1 --n_iterations 2 --corDecay 0.01 --n_factors 4 --show_step 3 --lr 0.001</code></li>
-<li>Run this command to reproduce the experiments for the baseline models on the Gowalla dataset: <code>python run_experiments_DGCF_baseline_algorithms.py --dataset gowalla</code></li>
-<li>Run this command to reproduce the experiments for the DGCF on the Amazon-book dataset: <code>python run_experiments_for_DGCF_algorithm.py --dataset amazonbook</code></li>
-<li>Run this command to reproduce the experiments for the baseline models on the Amazon-book dataset: <code>python run_experiments_DGCF_baseline_algorithms.py --dataset amazonbook</code><li>
+<li>Run this command to reproduce the experiments for the DGCF on the Yelp 2018 dataset: <code>python run_experiments_for_DGCF_original.py --dataset yelp2018</code></li>
+<li>Run this command to reproduce the experiments for the baseline models on the Yelp 2018 dataset: <code>python run_experiments_DGCF_baselines.py --dataset yelp2018</code></li>
+
+<li>Run this command to reproduce the experiments for the DGCF on the Gowalla dataset: <code>python run_experiments_for_DGCF_original.py --dataset gowalla --batch_size 2000 --n_layers 1 --n_iterations 2 --corDecay 0.01 --n_factors 4 --show_step 3 --lr 0.001</code></li>
+<li>Run this command to reproduce the experiments for the baseline models on the Gowalla dataset: <code>python run_experiments_DGCF_baselines.py --dataset gowalla</code></li>
+
+<li>Run this command to reproduce the experiments for the DGCF on the Amazon-book dataset: <code>python run_experiments_for_DGCF_original.py --dataset amazonbook</code></li>
+<li>Run this command to reproduce the experiments for the baseline models on the Amazon-book dataset: <code>python python run_experiments_DGCF_baselines.py --dataset amazonbook</code><li>
 
 
 <h5>Note: The DGCF was implemented using TensorFlow 1.14, which does not support current versions of Python. Therefore, we provide a separate installation guide to run the experiments for DGCF model</h5>
@@ -141,7 +140,7 @@
     <li>Move into the <b>IntentAwareRS</b> directory</li>
     <li>Run this command to create virtual environment: <code>conda create --name DGCF_env python=3.6</code></li>
     <li>Run this command to activate the virtual environment: <code>conda activate DGCF_env</code></li>
-    <li>Run this command to install the required libraries for CPU: <code>pip install -r requirements_dgcf.txt</code></li>
+    <li>Run this command to install the required libraries for CPU: <code>pip install -r requirements_IntentAwareRS_DGCF.txt</code></li>
   </ul>
 </body>
 </html>  
