@@ -18,19 +18,22 @@ def _get_instance(recommender_class, URM_train, ICM_all, UCM_all):
     else:
         recommender_object = recommender_class(URM_train)
     return recommender_object
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Accept data name as input')
-    parser.add_argument('--dataset', type = str, default='lastFm', help="alibabaFashion / amazonBook / lastFm")
-    parser.add_argument('--re', type=int, default=0, help="Yes / No")
-    args = parser.parse_args()
 
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Run KDIN.")
+    parser.add_argument('--dataset', nargs='?', default="lastFm", help='Choose a dataset from {yelp2018, gowalla, amazonbook}')
+    parser.add_argument('--resolveDataLeakage', nargs='?', default="yes", help='Choose a dataset from {yelp2018, gowalla, amazonbook}')
+    return parser.parse_args()
+if __name__ == '__main__':
+    args = parse_args() 
     dataset_name = args.dataset
     resolveLastFMDataLeakageIssue = False
-    print(args.resolve)
-    if args.resolve == 1:
-        print("in side")
-        resolveLastFMDataLeakageIssue = True
+    print(args.resolveDataLeakage)
 
+    if args.resolveDataLeakage == "yes":
+        resolveLastFMDataLeakageIssue = True
+    
 
     print("<<<<<<<<<<<<<<<<<<<<<< Experiments are running for  "+dataset_name+" dataset Wait for results......")
     data_path = Path("data/KGIN/"+dataset_name)

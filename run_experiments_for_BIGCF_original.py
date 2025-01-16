@@ -56,6 +56,8 @@ if __name__ == '__main__':
     
     expanded_data = [(key, value) for key, value in metrics_dic.items()]
     df = pd.DataFrame(expanded_data, columns=['Measures', 'Values'])
+    print("Experiments results for "+args.dataset)
+    print(df)
     df.to_csv(saved_results + "/"+args.dataset+"_BIGCF.txt", index = False)
     
     
