@@ -91,12 +91,12 @@
 
 <h5>Intent Disentanglement and Feature Self-supervision for Novel Recommendation (IDS4NR)</h5>
 <ul>
-<li>Run this command to reproduce the experiments for the IDS4NR_NCF and baseline models on the MovieLens dataset: <code>python run_experiments_IDS4NR_baselines_original.py --dataset MovieLens --model NCF</code>  </li>
-<li>Run this command to reproduce the experiments for the IDS4NR_NCF and baseline models on the Beauty dataset: <code>python run_experiments_IDS4NR_baselines_original.py --dataset Beauty --model NCF</code>  </li>
-<li>Run this command to reproduce the experiments for the IDS4NR_NCF and baseline models on the Music dataset: <code>python run_experiments_IDS4NR_baselines_original.py --dataset Music --model NCF</code>  </li>
-<li>Run this command to reproduce the experiments for the IDS4NR_LFM and baseline models on the MovieLens dataset: <code>python run_experiments_IDS4NR_baselines_original.py --dataset MovieLens --model LFM</code>  </li>
-<li>Run this command to reproduce the experiments for the IDS4NR_LFM and baseline models on the Beauty dataset: <code>python run_experiments_IDS4NR_baselines_original.py --dataset Beauty --model LFM</code>  </li>
-<li>Run this command to reproduce the experiments for the IDS4NR_LFM and baseline models on the Music dataset: <code>python run_experiments_IDS4NR_baselines_original.py --dataset Music --model LFM</code>  </li>
+<li>Run this command to reproduce the experiments for the IDS4NR_NCF and baseline models on the MovieLens dataset: <code>python run_experiments_IDS4NR_original_baselines.py --dataset MovieLens --model NCF</code>  </li>
+<li>Run this command to reproduce the experiments for the IDS4NR_NCF and baseline models on the Beauty dataset: <code>python run_experiments_IDS4NR_original_baselines.py --dataset Beauty --model NCF</code>  </li>
+<li>Run this command to reproduce the experiments for the IDS4NR_NCF and baseline models on the Music dataset: <code>python run_experiments_IDS4NR_original_baselines.py --dataset Music --model NCF</code>  </li>
+<li>Run this command to reproduce the experiments for the IDS4NR_LFM and baseline models on the MovieLens dataset: <code>python run_experiments_IDS4NR_original_baselines.py --dataset MovieLens --model LFM</code>  </li>
+<li>Run this command to reproduce the experiments for the IDS4NR_LFM and baseline models on the Beauty dataset: <code>python run_experiments_IDS4NR_original_baselines.py --dataset Beauty --model LFM</code>  </li>
+<li>Run this command to reproduce the experiments for the IDS4NR_LFM and baseline models on the Music dataset: <code>python run_experiments_IDS4NR_original_baselines.py --dataset Music --model LFM</code>  </li>
 </ul>
 
 <h5>Disentangled Contrastive Collaborative Filtering (DCCF)</h5>
