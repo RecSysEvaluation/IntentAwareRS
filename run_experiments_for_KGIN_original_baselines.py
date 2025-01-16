@@ -21,11 +21,14 @@ def _get_instance(recommender_class, URM_train, ICM_all, UCM_all):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Accept data name as input')
     parser.add_argument('--dataset', type = str, default='lastFm', help="alibabaFashion / amazonBook / lastFm")
-    parser.add_argument('--resolveLastFMDataLeakageIssue', type = str, default="False", help="False / True")
+    parser.add_argument('--re', type=int, default=0, help="Yes / No")
     args = parser.parse_args()
+
     dataset_name = args.dataset
     resolveLastFMDataLeakageIssue = False
-    if args.resolveLastFMDataLeakageIssue == "True":
+    print(args.resolve)
+    if args.resolve == 1:
+        print("in side")
         resolveLastFMDataLeakageIssue = True
 
 

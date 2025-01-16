@@ -86,7 +86,7 @@
 
 <li>Run this command to reproduce the experiments for the KGIN and baseline models on the lastFm dataset: <code>python run_experiments_for_KGIN_original_baselines.py --dataset lastFm</code>  </li>
 
-<li>Run this command to reproduce the experiments for the KGIN and baseline models on the lastFm dataset (without data leakage): <code>python run_experiments_for_KGIN_original_baselines.py --dataset lastFm resolveLastFMDataLeakageIssue True</code>  </li>
+<li>Run this command to reproduce the experiments for the KGIN and baseline models on the lastFm dataset (without data leakage): <code>python run_experiments_for_KGIN_original_baselines.py --dataset lastFm --resolveLastFMDataLeakageIssue Yes</code>  </li>
 </ul>
 
 <h5>Intent Disentanglement and Feature Self-supervision for Novel Recommendation (IDS4NR)</h5>
@@ -101,11 +101,11 @@
 
 <h5>Disentangled Contrastive Collaborative Filtering (DCCF)</h5>
 <ul>
-<li>Run this command to reproduce the experiments for the DCCF and baseline models on the AmazonBook dataset: <code>python run_experiments_for_DCCF_baselines_original.py --dataset amazonBook</code>  </li>
+<li>Run this command to reproduce the experiments for the DCCF and baseline models on the AmazonBook dataset: <code>python run_experiments_for_DCCF_original_baselines.py --dataset amazonBook</code>  </li>
 
-<li>Run this command to reproduce the experiments for the DCCF and baseline models on the Gowalla dataset: <code>python run_experiments_for_DCCF_baselines_original.py --dataset gowalla</code>  </li>
+<li>Run this command to reproduce the experiments for the DCCF and baseline models on the Gowalla dataset: <code>python run_experiments_for_DCCF_original_baselines.py --dataset gowalla</code>  </li>
 
-<li>Run this command to reproduce the experiments for the DCCF and baseline models on the Tmall dataset: <code>python run_experiments_for_DCCF_baselines_original.py --dataset tmall</code>  </li>
+<li>Run this command to reproduce the experiments for the DCCF and baseline models on the Tmall dataset: <code>python run_experiments_for_DCCF_original_baselines.py --dataset tmall</code>  </li>
 </ul>
 
 <h5>Bilateral Intent-guided Graph Collaborative Filtering (BIGCF)</h5>
