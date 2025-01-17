@@ -1,5 +1,4 @@
 from .metrics import *
-from .parser import parse_args
 
 import torch
 import numpy as np
@@ -18,6 +17,7 @@ for i in [1, 5, 10, 20, 50, 100]:
     NDCG_["NDCG"+str(i)] = NDCG(i)
 Recall_.update(NDCG_)
 
+"""
 args = parse_args()
 Ks = eval(args.Ks)
 device = torch.device("cuda:" + str(args.gpu_id)) if args.cuda else torch.device("cpu")
@@ -110,8 +110,8 @@ def test_one_user(x):
 
     return get_performance(user_pos_test, r, auc, Ks)
 
-
-def model_evaluation(model, user_dict, n_params, userWithDataLeakage, lastFMDataLeakage):
+"""
+def model_evaluation(model, user_dict, n_params, userWithDataLeakage, lastFMDataLeakage, BATCH_SIZE, device):
     
     global n_users, n_items
     n_items = n_params['n_items']

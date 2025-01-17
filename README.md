@@ -86,7 +86,7 @@
 
 <li>Run this command to reproduce the experiments for the KGIN and baseline models on the lastFm dataset: <code>python run_experiments_for_KGIN_original_baselines.py --dataset lastFm</code>  </li>
 
-<li>Run this command to reproduce the experiments for the KGIN and baseline models on the lastFm dataset (without data leakage): <code>python run_experiments_for_KGIN_original_baselines.py --dataset lastFm --resolveDataLeakage yes</code>  </li>
+<li>Run this command to reproduce the experiments for the KGIN and baseline models on the lastFm dataset (without data leakage issue): <code>python run_experiments_for_KGIN_original_baselines.py --dataset lastFm --resolveDataLeakage yes</code>  </li>
 </ul>
 
 <h5>Intent Disentanglement and Feature Self-supervision for Novel Recommendation (IDS4NR)</h5>

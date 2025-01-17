@@ -5,13 +5,18 @@ Created on July 1, 2020
 __author__ = "huangtinglin"
 
 import random
-
 import torch
 import numpy as np
 from tqdm import tqdm
 import time
 import pandas as pd
 import argparse
+
+import torch
+import numpy as np
+import multiprocessing
+import heapq
+from time import time
 from topn_baselines_neurals.Recommenders.Knowledge_Graph_based_Intent_Network_KGIN_WWW.utils.data_loader import load_data
 from topn_baselines_neurals.Recommenders.Knowledge_Graph_based_Intent_Network_KGIN_WWW.modules.KGIN import Recommender
 from topn_baselines_neurals.Recommenders.Knowledge_Graph_based_Intent_Network_KGIN_WWW.utils.evaluate import model_evaluation
@@ -36,6 +41,7 @@ def get_feed_dict(train_entity_pairs, start, end, train_user_set, n_items):
     feed_dict['neg_items'] = torch.LongTensor(negative_sampling(entity_pairs,
                                                                 train_user_set)).to(device)
     return feed_dict
+"""
 def parse_args(dataset, dim, lr, sim_regularity, batch_size, node_dropout, node_dropout_rate, mess_dropout, mess_dropout_rate, gpu_id, context_hops, epoch):
     parser = argparse.ArgumentParser(description="KGIN")
 
@@ -74,11 +80,9 @@ def parse_args(dataset, dim, lr, sim_regularity, batch_size, node_dropout, node_
     parser.add_argument("--out_dir", type=str, default="./weights/", help="output directory for model")
 
     return parser.parse_args()
+"""
 
-
-def run_experiments_KGIN_model(dataset, dim=64, lr= 0.0001, sim_regularity=0.0001, batch_size=1024,
-                      node_dropout=True, node_dropout_rate=0.5, mess_dropout=True, mess_dropout_rate=0.1, gpu_id=0, context_hops=3, 
-                      epoch = 60, lastFMDataLeakage = False, datasetName = None):
+def run_experiments_KGIN_model(args1, lastFMDataLeakage = False):
     
     """fix the random seed"""
     seed = 2020
@@ -90,12 +94,13 @@ def run_experiments_KGIN_model(dataset, dim=64, lr= 0.0001, sim_regularity=0.000
     torch.backends.cudnn.benchmark = False
     global args, device
 
-    args = parse_args(dataset, dim, lr, sim_regularity, batch_size, node_dropout, node_dropout_rate, mess_dropout, mess_dropout_rate, gpu_id, context_hops, epoch)
+    #args = parse_args(dataset, dim, lr, sim_regularity, batch_size, node_dropout, node_dropout_rate, mess_dropout, mess_dropout_rate, gpu_id, context_hops, epoch)
     """read args"""
+    args = args1
     device = torch.device("cuda:"+str(args.gpu_id)) if args.cuda else torch.device("cpu")
     """build dataset"""
     
-    train_cf, test_cf, user_dict, n_params, graph, mat_list, userWithDataLeakage = load_data(args, dataset, lastFMDataLeakage, datasetName)
+    train_cf, test_cf, user_dict, n_params, graph, mat_list, userWithDataLeakage = load_data(args, args.data_path, lastFMDataLeakage, args.dataset)
     adj_mat_list, norm_mat_list, mean_mat_list = mat_list
 
     n_users = n_params['n_users']
@@ -113,7 +118,7 @@ def run_experiments_KGIN_model(dataset, dim=64, lr= 0.0001, sim_regularity=0.000
     optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
     print("start training ...")
     print("Number of epoch:  "+str(args.epoch))
-    start = time.time()
+    start = time()
     for epoch in tqdm(range(args.epoch)):
         print("Current epoch:  "+str(epoch))
         # shuffle training data
@@ -135,10 +140,10 @@ def run_experiments_KGIN_model(dataset, dim=64, lr= 0.0001, sim_regularity=0.000
             cor_loss += batch_cor
             s += args.batch_size
 
-    trainingTime = time.time() - start
-    start = time.time()
-    result_dict = model_evaluation(model, user_dict, n_params, userWithDataLeakage, lastFMDataLeakage)
-    testingTime = time.time() - start
+    trainingTime = time() - start
+    start = time()
+    result_dict = model_evaluation(model, user_dict, n_params, userWithDataLeakage, lastFMDataLeakage, args.test_batch_size, device)
+    testingTime = time() - start
 
     result_df = pd.DataFrame()
     for key in result_dict:
@@ -149,7 +154,7 @@ def run_experiments_KGIN_model(dataset, dim=64, lr= 0.0001, sim_regularity=0.000
     result_df["TestingTimeforAllUser"] = [testingTime]
     result_df["AverageTestingPerUser"] = [testingTime  / len(user_dict["test_user_set"])]
 
-    return result_df         
+    return result_df 
 
             
 

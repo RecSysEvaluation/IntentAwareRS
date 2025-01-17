@@ -1,4 +1,3 @@
-
 from topn_baselines_neurals.Recommenders.Knowledge_Graph_based_Intent_Network_KGIN_WWW.run_experiments_KGIN_ import *
 from topn_baselines_neurals.Data_manager.lastFM_AmazonBook_AliBabaFashion_KGIN import lastFM_AmazonBook_AliBabaFashion_KGIN 
 from topn_baselines_neurals.Recommenders.Incremental_Training_Early_Stopping import Incremental_Training_Early_Stopping
@@ -19,22 +18,57 @@ def _get_instance(recommender_class, URM_train, ICM_all, UCM_all):
         recommender_object = recommender_class(URM_train)
     return recommender_object
 
-
 def parse_args():
-    parser = argparse.ArgumentParser(description="Run KDIN.")
-    parser.add_argument('--dataset', nargs='?', default="lastFm", help='Choose a dataset from {yelp2018, gowalla, amazonbook}')
-    parser.add_argument('--resolveDataLeakage', nargs='?', default="yes", help='Choose a dataset from {yelp2018, gowalla, amazonbook}')
+    parser = argparse.ArgumentParser(description="KGIN")
+
+    # ===== dataset ===== #
+    parser.add_argument("--dataset", nargs="?", default="lastFm", help="Choose a dataset:[lastFm, alibabaFashion, amazonBook]")
+    parser.add_argument('--resolveDataLeakage', nargs='?', default="no", help='yes/no')
+    parser.add_argument("--data_path", nargs="?", default="data/", help="Input data path.")
+
+    # ===== train ===== #
+    parser.add_argument('--epoch', type=int, default=1, help='number of epochs')
+    parser.add_argument('--batch_size', type=int, default=1024, help='batch size')
+    parser.add_argument('--test_batch_size', type=int, default=1024, help='batch size')
+    parser.add_argument('--dim', type=int, default=64, help='embedding size')
+    parser.add_argument('--l2', type=float, default=1e-5, help='l2 regularization weight')
+    parser.add_argument('--lr', type=float, default=1e-4, help='learning rate')
+    parser.add_argument('--sim_regularity', type=float, default=1e-4, help='regularization weight for latent factor')
+    parser.add_argument("--inverse_r", type=bool, default=True, help="consider inverse relation or not")
+    parser.add_argument("--node_dropout", type=bool, default=True, help="consider node dropout or not")
+    parser.add_argument("--node_dropout_rate", type=float, default=0.5, help="ratio of node dropout")
+    parser.add_argument("--mess_dropout", type=bool, default=True, help="consider message dropout or not")
+    parser.add_argument("--mess_dropout_rate", type=float, default=0.1, help="ratio of node dropout")
+    parser.add_argument("--batch_test_flag", type=bool, default=True, help="use gpu or not")
+    parser.add_argument("--channel", type=int, default=64, help="hidden channels for model")
+    parser.add_argument("--cuda", type=bool, default=True, help="use gpu or not")
+    parser.add_argument("--gpu_id", type=int, default=0, help="gpu id")
+    parser.add_argument('--Ks', nargs='?', default='[20, 40, 60, 80, 100]', help='Output sizes of every layer')
+    parser.add_argument('--test_flag', nargs='?', default='part',
+                        help='Specify the test type from {part, full}, indicating whether the reference is done in mini-batch')
+    parser.add_argument("--n_factors", type=int, default=4, help="number of latent factor for user favour")
+    parser.add_argument("--ind", type=str, default='distance', help="Independence modeling: mi, distance, cosine")
+
+    # ===== relation context ===== #
+    parser.add_argument('--context_hops', type=int, default=3, help='number of context hops')
+
+    # ===== save model ===== #
+    parser.add_argument("--save", type=bool, default=False, help="save model or not")
+    parser.add_argument("--out_dir", type=str, default="./weights/", help="output directory for model")
+
     return parser.parse_args()
+
+
+
 if __name__ == '__main__':
+
     args = parse_args() 
     dataset_name = args.dataset
     resolveLastFMDataLeakageIssue = False
-    print(args.resolveDataLeakage)
 
     if args.resolveDataLeakage == "yes":
         resolveLastFMDataLeakageIssue = True
     
-
     print("<<<<<<<<<<<<<<<<<<<<<< Experiments are running for  "+dataset_name+" dataset Wait for results......")
     data_path = Path("data/KGIN/"+dataset_name)
     data_path = data_path.resolve()
@@ -47,17 +81,19 @@ if __name__ == '__main__':
 
     # optimal hyperparameter values provided by original authors for each dataset....
     if dataset_name == "lastFm":
-        dim=64
-        lr= 0.0001
-        sim_regularity=0.0001
-        batch_size=1024
-        node_dropout=True
-        node_dropout_rate=0.5 
-        mess_dropout=True 
-        mess_dropout_rate=0.1 
-        gpu_id=0
-        context_hops=3
-        epoch = 509 #### epoch value is taken from the provided training logs.....
+        args.data_path = data_path
+        args.dim=64
+        args.lr= 0.0001
+        args.sim_regularity=0.0001
+        args.batch_size=1024
+        args.node_dropout=True
+        args.node_dropout_rate=0.5 
+        args.mess_dropout=True 
+        args.mess_dropout_rate=0.1
+        args.context_hops=3
+        args.epoch = 509  #### epoch value is taken from the provided training logs.....
+
+
     elif dataset_name == "alibabaFashion":
         dim=64
         lr= 0.0001
@@ -67,7 +103,6 @@ if __name__ == '__main__':
         node_dropout_rate=0.5 
         mess_dropout=True 
         mess_dropout_rate=0.1 
-        gpu_id=0
         context_hops= 3
         epoch = 209 #epoch value is taken from the provided training logs.....
     
@@ -80,13 +115,13 @@ if __name__ == '__main__':
         node_dropout=True
         node_dropout_rate=0.5 
         mess_dropout=True 
-        mess_dropout_rate=0.1 
-        gpu_id=0
+        mess_dropout_rate=0.1
         context_hops=3
         epoch = 579 # epoch value is taken from the provided training logs.....
     else:
         pass
     ############### BASELINE MODELS DATA PREPARATION ###############
+    
     validation_set = False
     dataset_object = lastFM_AmazonBook_AliBabaFashion_KGIN()
     URM_train, URM_test = dataset_object._load_data_from_give_files(data_path, dataset = args.dataset, dataLeakage = resolveLastFMDataLeakageIssue, validation=validation_set)
@@ -102,17 +137,14 @@ if __name__ == '__main__':
 
     
     ############### RUN EXPERIMENT KGIN MODEL ###############
-    result_df = run_experiments_KGIN_model(dataset=data_path, dim=dim, lr = lr, sim_regularity=sim_regularity, batch_size=batch_size, 
-                                           node_dropout=node_dropout, node_dropout_rate=node_dropout_rate, mess_dropout=mess_dropout, 
-                                           mess_dropout_rate=mess_dropout_rate, gpu_id=gpu_id, context_hops=context_hops, epoch = epoch, lastFMDataLeakage = resolveLastFMDataLeakageIssue, datasetName = args.dataset)
+    result_df = run_experiments_KGIN_model(args, lastFMDataLeakage = resolveLastFMDataLeakageIssue)
     if resolveLastFMDataLeakageIssue == True and args.dataset == "lastFM":
         result_df.to_csv(saved_results+"/"+"KGIN_resolveLastFMDataLeakageIssue_"+dataset_name+".text", index = False, sep = "\t")
     else:
         result_df.to_csv(saved_results+"/"+"KGIN_"+dataset_name+".text", index = False, sep = "\t")
     
-    
-
     ############### RUN EXPERIMENTS FOR BASELINE MODELS ###############
+    
     recommender_class_list = [
 
         Random,
@@ -189,7 +221,7 @@ if __name__ == '__main__':
         
         except Exception as e:
             traceback.print_exc()
-    
+
     
 
 
